@@ -2,11 +2,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>Aula 02 - Servlet e JSP</title>
+      <title>Aula 02 - Servlet, JSP e Sessão</title>
   </head>
   <body>
-    <h1>Seleciona uma opção</h1><br>
-    <div style="font-size: xx-large;">
+    <h1>Aula 02 - Servlet, JSP e Sessão</h1>
+    <h2>Seleciona uma opção</h2>
+    <div style="font-size: large;">
         <a href="/aula02/cadastro">Cadastro de Pessoa</a><br>
         <a href="/aula02/lista">Lista de Pessoa</a>
         <br>

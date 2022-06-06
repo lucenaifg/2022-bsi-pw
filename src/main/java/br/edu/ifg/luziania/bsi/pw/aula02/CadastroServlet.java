@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Objects.isNull;
-
 @WebServlet(name = "Cadastro de Pessoa", value = "/aula02/cadastro")
 public class CadastroServlet extends HttpServlet {
 

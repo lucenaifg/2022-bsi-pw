@@ -14,8 +14,8 @@ public class OutroServlet  extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>Outro Servlet</h1>");
-        out.println("<br>");
+        out.println("<h1>Aula 01 - Meu primeiro Servlet</h1>");
+        out.println("<h2>Este é outro Servlet</h2>");
         out.println("<a href=\"/\">Voltar</a>");
         out.println("</body></html>");
     }
