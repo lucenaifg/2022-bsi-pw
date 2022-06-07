@@ -29,11 +29,9 @@ function exemplo02(){
         body: JSON.stringify(data)
     });
 
-    console.log(data);
-    console.log(JSON.stringify(data));
-
     fetch(request)
-        .then(function(data) {
+        .then(response => response.json()) // solicitando o tipo de dado da resposta (promessa)
+        .then(function(data) { // recebendo o dado da resposta
             console.log(data)
         })
         .catch(function(error) {

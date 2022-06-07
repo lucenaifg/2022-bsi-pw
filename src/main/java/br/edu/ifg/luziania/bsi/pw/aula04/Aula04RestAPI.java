@@ -10,6 +10,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import java.io.*;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static java.util.Objects.isNull;
@@ -42,10 +44,15 @@ public class Aula04RestAPI {
     @Produces("application/json")
     @Consumes("application/json")
     public Response save(Pessoa pessoa, @Context HttpServletRequest request) {
-        HttpSession session = request.getSession();
+
+        List<Pessoa> pessoas = (List<Pessoa>) request.getSession().getAttribute("pessoas");
+        if (pessoas == null)
+            pessoas = new ArrayList<>();
+
+        //simulando persistencia criando ID randômico.
         pessoa.setId((new Random()).nextInt());
-        if (isNull(session.getAttribute("pessoa")))
-            session.setAttribute("pessoa", pessoa);
+        pessoas.add(pessoa);
+        request.getSession().setAttribute("pessoas",pessoas);
         return Response.ok(pessoa).build();
     }
 
