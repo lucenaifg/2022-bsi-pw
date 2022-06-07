@@ -56,4 +56,12 @@ public class Aula04RestAPI {
         return Response.ok(pessoa).build();
     }
 
+    @GET
+    @Path("list")
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Response list(@Context HttpServletRequest request) {
+        return Response.ok((List<Pessoa>) request.getSession().getAttribute("pessoas")).build();
+    }
+
 }

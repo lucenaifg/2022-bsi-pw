@@ -5,9 +5,11 @@ function exemplo01(){
     fetch(url)
         .then(function (response) {
             console.log(response);
+            alert('retorno ok!')
         })
         .catch(function (error) {
             console.error(error);
+            alert('retorno com erro!')
         });
 }
 
@@ -31,8 +33,34 @@ function exemplo02(){
 
     fetch(request)
         .then(response => response.json()) // solicitando o tipo de dado da resposta (promessa)
-        .then(function(data) { // recebendo o dado da resposta
-            console.log(data)
+        .then(function(pessoa) { // recebendo o dado da resposta
+            console.log(pessoa)
+            alert(JSON.stringify(pessoa));
+        })
+        .catch(function(error) {
+            console.error(error);
+        });
+}
+
+
+function exemplo03(){
+
+    let url = "http://localhost:8080/api/aula04/list"
+
+
+    var request = new Request(url, {
+        method: 'GET',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        })
+    });
+
+    fetch(request)
+        .then(response => response.json())
+        .then(function(list) {
+            console.log(list);
+            alert(JSON.stringify(list));
         })
         .catch(function(error) {
             console.error(error);
