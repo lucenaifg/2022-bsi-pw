@@ -16,7 +16,7 @@ public class Aula03RestAPI {
 
     private FileInputStream getFile(String filename) {
         try {
-            String base = servletContext.getRealPath("/WEB-INF/classes/frontend");
+            String base = servletContext.getRealPath("/WEB-INF/classes/view");
             File f = new File(String.format("%s/%s", base, filename));
             return new FileInputStream(f);
         } catch (FileNotFoundException e) {
