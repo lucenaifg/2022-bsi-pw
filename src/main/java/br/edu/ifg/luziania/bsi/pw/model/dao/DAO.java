@@ -1,8 +1,6 @@
 package br.edu.ifg.luziania.bsi.pw.model.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 public abstract class DAO<T> {
@@ -18,17 +16,25 @@ public abstract class DAO<T> {
     private Connection conn;
     private Statement stmt;
 
-    public Statement connect() {
+    public Connection connection() {
         if (conn != null)
             close();
-
         try {
             // STEP 1: Register JDBC driver
             Class.forName(JDBC_DRIVER);
-
             //STEP 2: Open a connection
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            return conn.createStatement();
+            return DriverManager.getConnection(DB_URL, USER, PASS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public PreparedStatement preparedStatement(String sql) {
+        if (conn != null)
+            close();
+        try {
+            return connection().prepareStatement(sql);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -36,7 +42,7 @@ public abstract class DAO<T> {
     }
 
     public abstract void createTable();
-    public abstract void insert(T entity);
+    public abstract void insert(T entity) throws SQLException;
     public abstract void delete(T entity);
     public abstract void update(T entity);
     public abstract T getById(T entity);
