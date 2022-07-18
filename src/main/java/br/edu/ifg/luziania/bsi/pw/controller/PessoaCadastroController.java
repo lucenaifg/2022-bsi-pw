@@ -1,15 +1,20 @@
 package br.edu.ifg.luziania.bsi.pw.controller;
 
+import br.edu.ifg.luziania.bsi.pw.model.bo.PessoaBO;
 import br.edu.ifg.luziania.bsi.pw.model.dto.PessoaDTO;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateInstance;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("pessoa")
 public class PessoaCadastroController {
+
+    @Inject
+    PessoaBO bo;
 
     @CheckedTemplate
     public static class Templates {
@@ -28,6 +33,7 @@ public class PessoaCadastroController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(PessoaDTO dto){
+        bo.save(dto);
         return Response.ok().build();
     }
 
